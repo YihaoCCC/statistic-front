@@ -1,0 +1,101 @@
+.fixedBg {
+    
+}
+
+.home {
+    background-image: url('../../assets/a1f16-q4nez.jpg');
+   
+    background-repeat: no-repeat;
+    background-attachment: fixed;
+    background-size: cover;
+    width: 100%;
+    height: 100vh;
+    padding: 20px 10px;
+    box-sizing: border-box;
+    font-family: "Rubik", sans-serif;
+    font-weight: 400;
+    color: whitesmoke;
+    .header {
+        display: flex;
+        align-items: center;
+        justify-content: space-between;
+        .date {
+            .time {
+                display: flex;
+                span {
+                    font-size: 6em;
+                    height: 80px;
+                    line-height: 80px;
+                    text-shadow: 2px 2px 2px rgba(42, 42, 42, 0.386);
+                    
+                }
+                .weather {
+                    display: flex;
+                    flex-direction: column-reverse;
+                    font-size: 24px;
+                }
+            }
+            .datetime {
+                margin: 10px auto;
+            }
+        }
+    }
+    .test {
+        height: 2000px;
+    }
+}
+
+.my-flex {
+    display: flex;
+    align-items: center;
+}
+i {
+    margin-right: 10px;
+}
+.primary {
+    min-width: 80px;
+    height: 42px;
+    box-sizing: border-box;
+    text-align: center;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+.clearButton {
+    backdrop-filter: blur(3px);
+    background-color: rgba(white, 0.1);
+    border: 1px solid rgba(white, 0.1);
+    border-radius: 100px;
+    box-shadow: 2px 2px 2px rgba(black, 0.1);
+    cursor: pointer;
+    transition: all .3s ease-in-out;
+    &:hover {
+      background-color: rgba(white, 0.2);
+      border: 1px solid rgba(white, 0.3);
+    }
+  }
+
+.openDoor {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100vh;
+    z-index: 100;
+    background-color: var(--theme-background);
+    animation: close 1s ease-in-out forwards;
+    animation-delay: .3s;
+  }
+  
+@keyframes close {
+  0% {
+      opacity: 1;
+      background-color: var(--theme-background);
+      clip-path: circle(100%);      
+  }
+  100% {
+      opacity: 0;
+      background-color: rgb(183, 183, 183);
+      clip-path: circle(0% at 50% 50%);
+  }
+}

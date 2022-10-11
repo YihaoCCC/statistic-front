@@ -9,9 +9,10 @@ export function AuthCom(props:PropsWithChildren) {
     return (
         <>
             {
-                window.localStorage.getItem('react-token') ? 
-                props.children : 
-                <Navigate to='/login'/>
+                // window.localStorage.getItem('react-token') ? 
+                // props.children : 
+                // <Navigate to='/login'/>
+                props.children
             }
         </>
     )

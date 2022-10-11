@@ -1,6 +1,20 @@
+import { useEffect, useState } from 'react';
 import './home.scss';
+import { getYiYan } from './homeHttp';
+
+
 
 function Home() {
+    // 一言
+    const [yiYan, setYiYan] = useState('------')
+    useEffect(() => {
+        getYiYan().then((res:any) => {
+            let newMessage = `${res.data.content} --- ${res.data.from || ''}` 
+            setYiYan(newMessage)
+        })
+    },[])
+
+
     return(
         <>
             <div className='home'>
@@ -85,7 +99,7 @@ function Home() {
                </div>
                <div className='footer'>
                     <span>
-                        fadsfsadfadsfadsfdsafadsfadsfsdafadsf
+                        {yiYan}
                     </span>
                </div>
             </div>

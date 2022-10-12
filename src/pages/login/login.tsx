@@ -6,6 +6,7 @@ import { useNavigate } from 'react-router-dom'
 function Login() {
     const router = useNavigate()
     const login = () => {
+        localStorage.setItem('react-token', "123");
         router('/')
     }
     return(

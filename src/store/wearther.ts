@@ -1,5 +1,5 @@
 import yhHttp from "../http";
-import { makeAutoObservable } from 'mobx'
+import { makeAutoObservable, runInAction } from 'mobx'
 
 
 
@@ -17,7 +17,9 @@ class WeartherStore {
     getWeartheList = () => {
         instance.get('/api/tianqi?api_key=9352759393aef152&city=天津&type=2').then((res) => {
             console.log(res);
-            this.weartherList = res.data
+            runInAction(() => {
+                this.weartherList = res.data
+            })
         })
     }
     

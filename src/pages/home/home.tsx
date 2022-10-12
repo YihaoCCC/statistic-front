@@ -42,7 +42,7 @@ function Home() {
                             <div className='weather'>
                                 <div className='my-flex'>
                                     <i className="ri-sun-line" style={{color:'#F1C40E'}}></i>
-                                    <em style={{fontStyle:'normal'}}>20°</em>
+                                    <em style={{fontStyle:'normal'}}>{WeartherStore.weartherList[0].celsius.slice(0,4)}</em>
                                 </div>
                             </div>
                         </div>
@@ -65,15 +65,15 @@ function Home() {
                     </div>
                     <div className='weartherBox'>
                         {
-                            WeartherStore.weartherList.map((item,index) => {
+                            WeartherStore.weartherList.map((item:any,index) => {
                                 return (
                                     <div className='weatherItem clearButton' key={index}>
                                         <span>
-                                            {/* {item} */}
+                                            {item.celsius}
                                         </span>
                                         <i className="ri-sun-line"></i>
                                         <span>
-                                            Mon
+                                            {item.day}
                                         </span>
                                     </div>
                                 )

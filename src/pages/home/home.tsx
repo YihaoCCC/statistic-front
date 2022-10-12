@@ -1,12 +1,19 @@
 import { useEffect, useState } from 'react';
 import './home.scss';
 import { getYiYan } from './homeHttp';
-
+import { getTime, getDate } from '../utils/Time';
 
 
 function Home() {
     // 一言
     const [yiYan, setYiYan] = useState('------')
+    // 当前时间
+    const [time, setTime] = useState(getTime())
+    // 日期
+    const [date, setDate] = useState(getDate())
+    setInterval(() => {
+        setTime(getTime())
+    },1000) 
     useEffect(() => {
         getYiYan().then((res:any) => {
             let newMessage = `${res.data.content} --- ${res.data.from || ''}` 
@@ -22,7 +29,7 @@ function Home() {
                     <div className='date'>
                         <div className='time'>
                             <span>
-                                {'19:37'}
+                                {time}
                             </span>
                             <div className='weather'>
                                 <div className='my-flex'>
@@ -32,7 +39,7 @@ function Home() {
                             </div>
                         </div>
                         <div className='datetime my-flex clearButton primary'>         
-                             <i className="ri-calendar-2-line"></i> Today： 2022-10-10
+                             <i className="ri-calendar-2-line"></i> Today： {date}
                         </div>
                     </div>
                     <div className='user clearButton primary'>
@@ -102,6 +109,9 @@ function Home() {
                         {yiYan}
                     </span>
                </div>
+            </div>
+            <div className='openDoor'>
+
             </div>
         </>
        

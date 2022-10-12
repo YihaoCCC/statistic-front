@@ -17,7 +17,7 @@
         justify-content: space-between;
         .date {
             .time {
-                display: flex;
+                display: flex;               
                 span {
                     font-size: 6em;
                     height: 80px;
@@ -28,12 +28,16 @@
                 .weather {
                     display: flex;
                     flex-direction: column-reverse;
-                    font-size: 24px;
+                    font-size: 1.4em;
+                    margin-left: .4em;
                 }
             }
             .datetime {
                 margin: 10px auto;
             }
+        }
+        .user {
+            min-width: 13em;
         }
     }
     .confirmButton {
@@ -50,7 +54,7 @@
         align-items: center;
         justify-content: space-between;
         min-width:80%;
-        overflow: auto;
+        overflow-x: auto;
         .weatherItem  {
             width: 10%;
             min-width: 80px;
@@ -75,11 +79,11 @@
     .foodBox {
         display: flex;
         align-items: center;
-        justify-content: space-between;
+        justify-content: center;
         min-width:80%;
         flex-wrap: wrap;
         .foodItem {
-            margin-top: 20px;
+            margin: 20px;
             min-width: 30em;
             height: 260px;
             border-radius: 20px;
@@ -146,7 +150,7 @@
         bottom: 0;
         left: 0;
         width: 100%;
-        background-image: linear-gradient(to bottom, rgba(0, 0, 0, 0.096),rgba(0, 0, 0, 0.512));
+        background-image: linear-gradient(to bottom, rgba(0, 0, 0, 0.096),rgba(0, 0, 0, 0.8));
     }
 }
 
@@ -157,6 +161,7 @@
         align-items: center;
         justify-content: flex-start;
         margin-bottom: 15px;
+        font-size: 1.3em;
     }
 }
 

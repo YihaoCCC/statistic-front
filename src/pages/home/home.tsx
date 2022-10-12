@@ -1,10 +1,17 @@
 import { useEffect, useState } from 'react';
 import './home.scss';
+import { observer } from 'mobx-react-lite'
+
 import { getYiYan } from './homeHttp';
 import { getTime, getDate } from '../utils/Time';
 
+import useStore from '../../store';
 
 function Home() {
+    const { UserStore, WeartherStore } = useStore()
+
+
+
     // 一言
     const [yiYan, setYiYan] = useState('------')
     // 当前时间
@@ -19,6 +26,7 @@ function Home() {
             let newMessage = `${res.data.content} --- ${res.data.from || ''}` 
             setYiYan(newMessage)
         })
+        WeartherStore.getWeartheList()
     },[])
 
 
@@ -44,7 +52,7 @@ function Home() {
                     </div>
                     <div className='user clearButton primary'>
                         <i className="ri-admin-line"></i>
-                        cyh
+                        {UserStore.userInfo.name}
                     </div>
                </div>
                <div className='confirmButton clearButton'>
@@ -57,11 +65,11 @@ function Home() {
                     </div>
                     <div className='weartherBox'>
                         {
-                            [1,2,3,4,5,6,7].map((item,index) => {
+                            WeartherStore.weartherList.map((item,index) => {
                                 return (
                                     <div className='weatherItem clearButton' key={index}>
                                         <span>
-                                            {item}
+                                            {/* {item} */}
                                         </span>
                                         <i className="ri-sun-line"></i>
                                         <span>
@@ -119,4 +127,4 @@ function Home() {
     )
 }
 
-export default Home
+export default observer(Home) 

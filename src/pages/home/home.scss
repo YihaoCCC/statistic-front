@@ -36,6 +36,9 @@
                 margin: 10px auto;
             }
         }
+        .user {
+            min-width: 13em;
+        }
     }
     .confirmButton {
         height: 60px;
@@ -51,7 +54,7 @@
         align-items: center;
         justify-content: space-between;
         min-width:80%;
-        overflow-x: scroll;
+        overflow-x: auto;
         .weatherItem  {
             width: 10%;
             min-width: 80px;

@@ -1,4 +1,4 @@
-import { useEffect, useState } from 'react';
+import { useEffect, useState, useMemo } from 'react';
 import './home.scss';
 import { observer } from 'mobx-react-lite'
 
@@ -6,6 +6,7 @@ import { getYiYan } from './homeHttp';
 import { getTime, getDate } from '../utils/Time';
 
 import useStore from '../../store';
+import WeatherIconCom from '../utils/WeatherIconCom';
 
 function Home() {
     const { UserStore, WeartherStore } = useStore()
@@ -20,7 +21,8 @@ function Home() {
     const [date, setDate] = useState(getDate())
     setInterval(() => {
         setTime(getTime())
-    },1000) 
+    },1000)
+    
     useEffect(() => {
         getYiYan().then((res:any) => {
             let newMessage = `${res.data.content} --- ${res.data.from || ''}` 
@@ -29,6 +31,12 @@ function Home() {
         WeartherStore.getWeartheList()
     },[])
 
+    const temperature = useMemo(() => {
+        return function(item:string) {
+            return item.replace('/','')
+        }
+    },[WeartherStore.weartherList])
+    
 
     return(
         <>
@@ -41,8 +49,8 @@ function Home() {
                             </span>
                             <div className='weather'>
                                 <div className='my-flex'>
-                                    <i className="ri-sun-line" style={{color:'#F1C40E'}}></i>
-                                    <em style={{fontStyle:'normal'}}>{WeartherStore.weartherList[0].celsius.slice(0,4)}</em>
+                                    <WeatherIconCom weather={WeartherStore.getTodayWeather()}></WeatherIconCom>
+                                    <em style={{fontStyle:'normal'}}>{WeartherStore.getTodayTem()}</em>
                                 </div>
                             </div>
                         </div>
@@ -65,13 +73,14 @@ function Home() {
                     </div>
                     <div className='weartherBox'>
                         {
-                            WeartherStore.weartherList.map((item:any,index) => {
-                                return (
+                            WeartherStore.weartherList.map((item:MyWeather,index) => {
+                                return (                
                                     <div className='weatherItem clearButton' key={index}>
-                                        <span>
-                                            {item.celsius}
+                                        <span style={{margin:0}}>
+                                            {temperature( item.celsius)}
                                         </span>
-                                        <i className="ri-sun-line"></i>
+                                        <p style={{fontSize:'12px',margin:0, marginBottom:'10px'}}>{item.weather}</p>
+                                        <WeatherIconCom weather={item.weather}></WeatherIconCom>
                                         <span>
                                             {item.day}
                                         </span>

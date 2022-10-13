@@ -8,7 +8,7 @@ const instance = yhHttp.getInstance()
 
 class WeartherStore {
 
-    weartherList = []
+    weartherList:Array<MyWeather> = []
     
     constructor() {
         makeAutoObservable(this)
@@ -22,6 +22,23 @@ class WeartherStore {
             })
         })
     }
+
+    getTodayTem = () => {
+        if(this.weartherList.length) {
+            return this.weartherList[0].celsius.replace('/','')
+        } else {
+            return '---'
+        }
+    }
+
+    getTodayWeather = () => {
+        if(this.weartherList.length) {
+            return this.weartherList[0].weather
+        } else {
+            return '---'
+        }
+    }
+
     
     
 }

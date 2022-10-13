@@ -12,7 +12,7 @@ export default function WeatherIconCom (props:MyWeather) {
         iconColor = '#42a5f5'
     } else if(weatherName === '多云') {
         // 多云
-        iconName = 'ri-sun-cloudy-line'
+        iconName = 'ri-sun-cloudy-fill'
         iconColor = '#42a5f5'
     } else if(weatherName === '阴转晴') {
         // 阴转晴

@@ -33,6 +33,9 @@ function Home() {
 
     const temperature = useMemo(() => {
         return function(item:string,index:number) {
+            if(item.length <= 4) {
+                return item.replace('/','')
+            }
             if(index === 0) {
                 return item.replace('/','')
             } else {

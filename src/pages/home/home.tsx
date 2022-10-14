@@ -32,11 +32,23 @@ function Home() {
     },[])
 
     const temperature = useMemo(() => {
-        return function(item:string) {
-            return item.replace('/','')
+        return function(item:string,index:number) {
+            if(item.length <= 4) {
+                return item.replace('/','')
+            }
+            if(index === 0) {
+                return item.replace('/','')
+            } else {
+                return item
+            }
         }
     },[WeartherStore.weartherList])
     
+ 
+    const [isConfim, setIsConfirm] = useState(false)
+    const confirm = () => {
+        setIsConfirm(true)
+    }
 
     return(
         <>
@@ -63,10 +75,15 @@ function Home() {
                         {UserStore.userInfo.name}
                     </div>
                </div>
-               <div className='confirmButton clearButton'>
-                    确认用餐
-               </div>
-               <div className='ItemBox'>    
+               {
+                isConfim ? 
+                <div className='confirmButton clearButton isConfirm'>已确认</div>
+                :
+                <div className='confirmButton clearButton' onClick={() => confirm()}>
+                    { parseInt(time.slice(0,3)) > 15 ? '对不起，今日不可预订' : '确认用餐'}
+                </div>
+               }
+               <div className={['ItemBox','weatherMargin', isConfim? 'cancelMargin':'' ].join(' ')}>    
                     <div className='BoxTitle'>   
                         <i className="ri-sun-line"></i>
                         <span>How's it look out there?</span> 
@@ -77,7 +94,7 @@ function Home() {
                                 return (                
                                     <div className='weatherItem clearButton' key={index}>
                                         <span style={{margin:0}}>
-                                            {temperature( item.celsius)}
+                                            {temperature(item.celsius,index)}
                                         </span>
                                         <p style={{fontSize:'12px',margin:0, marginBottom:'10px'}}>{item.weather}</p>
                                         <WeatherIconCom weather={item.weather}></WeatherIconCom>
@@ -90,7 +107,7 @@ function Home() {
                         }
                     </div>
                </div>
-               <div className='ItemBox'>    
+               <div className='ItemBox foodMargin'>    
                     <div className='BoxTitle'>   
                         <i className="ri-cup-line"></i>
                         <span>
@@ -101,7 +118,7 @@ function Home() {
                         {
                             [1,2,3,4,5].map((item,index) => {
                                 return(
-                                    <div className='foodItem' key={index}>
+                                    <div className={`foodItem ${isConfim?'cancelFliter':''}`} key={index}>
                                         <img src="https://images.unsplash.com/photo-1606131731446-5568d87113aa?ixlib=rb-1.2.1&ixid=MnwxMjA3fDB8MHxzZWFyY2h8MXx8YnVyZ2Vyc3xlbnwwfHwwfHw%3D&auto=format&fit=crop&w=500&q=60" alt="" />
                                         <span>
                                             {item}

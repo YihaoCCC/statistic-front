@@ -16,6 +16,9 @@
   --font-color: #34495e;
   --theme-color: #b01f24;
   --theme-background: #e4ebf5;
+  --ms-flex-direction: row;
+  --login-box-width: 36%;
+  --login-svg-boder-width: 2px solid;
 }
 :root[data-theme=light] {
   --theme-background: #fff;
@@ -55,8 +58,12 @@ body::-webkit-scrollbar-track {
   }
 }
 
-@media(max-width:600px) {
+@media(max-width:900px) {
   :root {
     font-size: 0.6em ;
+    --ms-flex-direction: column;
+    --login-box-width: 42em;
+    --login-svg-border: rgba(0,0,0,0);
+    --login-svg-boder-width: 0px solid;
   }
 }

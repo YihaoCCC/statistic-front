@@ -13,6 +13,7 @@
   -webkit-font-smoothing: antialiased;
   -moz-osx-font-smoothing: grayscale;
   -webkit-text-size-adjust: 100%;
+  --login-bg-height: 100vh;
   --font-color: #34495e;
   --theme-color: #b01f24;
   --theme-background: #e4ebf5;
@@ -61,6 +62,7 @@ body::-webkit-scrollbar-track {
 @media(max-width:900px) {
   :root {
     font-size: 0.6em ;
+    --login-bg-height: 40vh;
     --ms-flex-direction: column;
     --login-box-width: 42em;
     --login-svg-border: rgba(0,0,0,0);

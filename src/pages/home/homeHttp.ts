@@ -7,3 +7,9 @@ export const getYiYan = () => {
         return res
     })
 }
+
+export const getBg = () => {
+    return getInstance.get('/api/bing?apikey=d204f2ca364cd69e&id=today&pn=1').then(res => {
+        return res
+    })
+}

@@ -6,7 +6,7 @@ import { getYiYan } from './homeHttp';
 import { getTime, getDate } from '../utils/Time';
 
 import useStore from '../../store';
-import WeatherIconCom from '../utils/WeatherIconCom';
+import WeatherIconCom from '../components/WeatherIconCom';
 
 function Home() {
     const { UserStore, WeartherStore } = useStore()

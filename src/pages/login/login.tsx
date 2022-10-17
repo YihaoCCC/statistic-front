@@ -5,7 +5,7 @@ import { useNavigate } from 'react-router-dom'
 
 function Login() {
     const router = useNavigate()
-    const login = () => {
+    const login = (userInfo: User) => {
         sessionStorage.setItem('react-token', "123");
         router('/')
     }

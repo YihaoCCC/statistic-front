@@ -15,7 +15,7 @@ class WeartherStore {
     } 
 
     getWeartheList = () => {
-        instance.get('/api/tianqi?api_key=9352759393aef152&city=天津&type=2').then((res) => {
+        instance.get('/mxg-api/api/tianqi?api_key=9352759393aef152&city=天津&type=2').then((res) => {
             console.log(res);
             runInAction(() => {
                 this.weartherList = res.data

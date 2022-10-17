@@ -5,7 +5,7 @@ const instance = yhHttp.getInstance()
 
 class UserStore {
     userInfo = {
-        name: 'from-store-cyh'
+        name: 'From-Java-cyh'
     }
 
     constructor() {

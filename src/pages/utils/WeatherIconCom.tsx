@@ -1,5 +1,7 @@
+import { memo } from "react"
 
-export default function WeatherIconCom (props:MyWeather) {    
+function WeatherIconCom (props:MyWeather) { 
+       
     const weatherName = props.weather || 'ri-sun-line'
     let iconName
     let iconColor
@@ -32,3 +34,5 @@ export default function WeatherIconCom (props:MyWeather) {
         </>
     )
 }
+
+export default memo(WeatherIconCom)

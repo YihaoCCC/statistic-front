@@ -139,9 +139,9 @@ function Home() {
                     </div>
                </div>
                <div className='footer'>
-                    <span>
+                    <p>
                         {yiYan}
-                    </span>
+                    </p>
                </div>
             </div>
             <div className='openDoor'>

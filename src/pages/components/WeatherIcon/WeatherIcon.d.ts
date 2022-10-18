@@ -1,0 +1,3 @@
+interface WeatherProps {
+    weather: string
+}

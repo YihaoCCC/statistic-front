@@ -6,7 +6,8 @@ import { getYiYan } from './homeHttp';
 import { getTime, getDate } from '../utils/Time';
 
 import useStore from '../../store';
-import WeatherIconCom from '../components/WeatherIconCom';
+import WeatherIconCom from '../components/WeatherIcon/WeatherIconCom';
+import YhCard from '../components/Card/YhCard';
 
 function Home() {
     const { UserStore, WeartherStore } = useStore()
@@ -114,7 +115,7 @@ function Home() {
                     </div>
                     <div className='foodBox'>
                         {
-                            [1,2,3,4,5].map((item,index) => {
+                            [1,2,3].map((item,index) => {
                                 return(
                                     <div className={`foodItem ${isConfim?'cancelFliter':''}`} key={index}>
                                         <img src="https://images.unsplash.com/photo-1606131731446-5568d87113aa?ixlib=rb-1.2.1&ixid=MnwxMjA3fDB8MHxzZWFyY2h8MXx8YnVyZ2Vyc3xlbnwwfHwwfHw%3D&auto=format&fit=crop&w=500&q=60" alt="" />
@@ -134,6 +135,41 @@ function Home() {
                             })
                         }
 
+                    </div>
+               </div>
+
+               <div className='ItemBox'>
+                    <div className='BoxTitle'>   
+                        <i className="ri-cup-line"></i>
+                        <span>
+                            Get it delivered!
+                        </span>
+                    </div>
+                    <div className='foodBox'>
+                        {
+                            [1,2].map((item,index) => {
+                                return(
+                                    <YhCard/>
+                                )
+                            })
+                        }
+                    </div>
+               </div>
+               <div className='ItemBox'>
+                    <div className='BoxTitle'>   
+                        <i className="ri-cup-line"></i>
+                        <span>
+                            Get it delivered!
+                        </span>
+                    </div>
+                    <div className='foodBox'>
+                        {
+                            [1,2].map((item,index) => {
+                                return(
+                                    <YhCard/>
+                                )
+                            })
+                        }
                     </div>
                </div>
                <div className='footer'>

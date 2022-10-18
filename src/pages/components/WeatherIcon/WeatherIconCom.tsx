@@ -1,6 +1,6 @@
 import { memo } from "react"
 
-function WeatherIconCom (props:MyWeather) { 
+function WeatherIconCom (props:WeatherProps) { 
        
     const weatherName = props.weather || 'ri-sun-line'
     let iconName

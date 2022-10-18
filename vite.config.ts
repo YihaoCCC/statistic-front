@@ -9,15 +9,15 @@ export default defineConfig({
     open: false,
     proxy: {
       '/my-back': {
-        target: 'http://localhost:8080',
+        target: 'http://localhost:8080/',
         changeOrigin: true,
-        rewrite: (path) => path.replace(/^\/api/, '')
+        rewrite: (path) => path.replace(/^\/my-back/, '')
       },
       '/mxg-api': {
         target: 'https://api.muxiaoguo.cn/',
         changeOrigin: true,
         rewrite: (path) => {
-          return path.replace(/^\/test/, '')
+          return path.replace(/^\/mxg-api/, '')
         }
       }
     }

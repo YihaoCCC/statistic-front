@@ -11,8 +11,6 @@ import WeatherIconCom from '../components/WeatherIconCom';
 function Home() {
     const { UserStore, WeartherStore } = useStore()
 
-
-
     // 一言
     const [yiYan, setYiYan] = useState('------')
     // 当前时间
@@ -72,7 +70,7 @@ function Home() {
                     </div>
                     <div className='user clearButton primary'>
                         <i className="ri-admin-line"></i>
-                        {UserStore.userInfo.name}
+                        {UserStore.userInfo.username}
                     </div>
                </div>
                {

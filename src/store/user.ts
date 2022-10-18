@@ -1,11 +1,11 @@
-import { makeAutoObservable } from 'mobx'
+import { makeAutoObservable, runInAction } from 'mobx'
 import yhHttp from '../http'
 
 const instance = yhHttp.getInstance()
 
 class UserStore {
     userInfo = {
-        name: 'From-Java-cyh'
+        username: 'From-Java-cyh'
     }
 
     constructor() {
@@ -13,12 +13,22 @@ class UserStore {
     }
 
 
-    login = (username:string,password:string) => {
-        instance.post('/api/user/login',{
-            username,
-            password
-        }).then(res => {
-            console.log(res);
+    login = (userInfo:User) => {
+        return instance.post('/my-back/user/login',userInfo).then((res:any) => {
+            runInAction(() => {
+                this.userInfo = res.body
+            })
+            let userId = res.body.id
+            return userId
+        })
+    }
+
+
+    getUserInfo = (userId:string) => {
+        return instance.post(`/my-back/user/getUserInfo`, {id : userId}).then((res:any) => {
+            runInAction(() => {
+                this.userInfo = res.body
+            })
         })
     }
 }

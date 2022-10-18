@@ -9,7 +9,7 @@ export function AuthCom(props:PropsWithChildren) {
     return (
         <>
             {
-                window.sessionStorage.getItem('react-token') ? 
+                window.sessionStorage.getItem('userId') ? 
                 props.children : 
                 <Navigate to='/login'/>
             }
